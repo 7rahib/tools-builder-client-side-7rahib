@@ -9,6 +9,13 @@ import Login from './Pages/Authentication/Login';
 import Signup from './Pages/Authentication/Signup';
 import RequiredAuth from './Pages/Authentication/RequiredAuth';
 import CheckoutPage from './Pages/Payment/CheckoutPage';
+import Dashboard from './Pages/Dashboard/Dashboard';
+import MyOrders from './Pages/Dashboard/MyOrders';
+import MyReviews from './Pages/Dashboard/MyReviews';
+import MyProfile from './Pages/Dashboard/MyProfile';
+import ManageProducts from './Pages/Dashboard/ManageProducts';
+import AddProducts from './Pages/Dashboard/AddProducts';
+import ManageUsers from './Pages/Dashboard/ManageUsers';
 
 
 function App() {
@@ -23,9 +30,18 @@ function App() {
         <Route path='/signup' element={<Signup />}></Route>
         <Route path='/portfolio' element={<Portfolio />}></Route>
         <Route path='/tools/:_id' element={<RequiredAuth><CheckoutPage /></RequiredAuth>}></Route>
-      </Routes>
+        <Route path='/dashboard' element={
+          <Dashboard></Dashboard>}>
+          <Route index element={<MyOrders></MyOrders>}></Route>
+          <Route path='review' element={<MyReviews></MyReviews>}></Route>
+          <Route path='profile' element={<MyProfile></MyProfile>}></Route>
+          <Route path='manageproduct' element={<ManageProducts></ManageProducts>}></Route>
+          <Route path='addproduct' element={<AddProducts></AddProducts>}></Route>
+          <Route path='manageuser' element={<ManageUsers></ManageUsers>}></Route>
+        </Route>
+      </Routes >
       <Footer></Footer>
-    </div>
+    </div >
   );
 }
 

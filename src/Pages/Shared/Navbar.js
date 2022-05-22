@@ -16,6 +16,7 @@ const Navbar = () => {
     const menuItems = <>
         <li><Link to='/portfolio'>Portfolio</Link></li>
         <li><Link to='/blog'>Blogs</Link></li>
+        <li>{user && <Link to='/dashboard'>Dashboard</Link>}</li>
         <li>{user ? <button onClick={logout} className="menu menu-horizontal">Sign Out</button> : <Link to="/login">Log In</Link>}</li>
     </>
 
@@ -37,6 +38,7 @@ const Navbar = () => {
                     {menuItems}
                 </ul>
             </div>
+
         </div>
     );
 };

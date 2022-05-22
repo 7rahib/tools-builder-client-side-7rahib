@@ -41,17 +41,17 @@ const CheckoutPage = () => {
     }
 
     return (
-        <div>
+        <div className='mx-5 mb-2'>
             <div className='flex justify-center mt-10'>
-                <div class="card w-1/3 bg-base-200 shadow-2xl text-neutral-content">
+                <div class="card lg:w-lg bg-base-200 shadow-2xl text-neutral-content">
                     <div class="card-body">
                         <h2 class="card-title">Welcome <span className='text-warning'>{(user[0]?.displayName)}</span>,</h2>
                         <p>You have logged in with <span className='text-warning'>{(user[0]?.email)}</span>. We will contact you there if needed.</p>
                     </div>
                 </div>
             </div>
-            <button className='kbd ml-28' onClick={() => navigate(-1)}>◀︎ Go back</button>
-            <div className="hero min-h-screen bg-base-100  mt-[-95px]">
+            <button className='kbd mt-2 lg:ml-20' onClick={() => navigate(-1)}>◀︎ Go back</button>
+            <div className="hero min-h-screen bg-base-100 ">
                 <div className="hero-content flex-col lg:flex-row">
                     <div className='grid lg:grid-cols-3'>
                         <img src={data.image} className="sm:max-w-sm lg:max-w-lg rounded-lg shadow-2xl" alt={data.name} />
@@ -79,7 +79,7 @@ const CheckoutPage = () => {
                                     {errors.newQuantityValue?.type === 'required' && <span className="label-text-alt text-error">{errors.newQuantityValue.message}</span>}
                                 </label>
                             </div>
-                            <input className='btn btn-info mt-2' type="submit" value="Payment" />
+                            <input className='btn btn-info mt-2' type="submit" value="Confirm Order" />
                         </form>
                     </div>
                 </div>

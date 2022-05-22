@@ -49,7 +49,6 @@ const Login = () => {
     if (loading || googleLoading) {
         return <Loading></Loading>
     }
-    console.log(user)
 
     return (
         <div className='flex h-screen justify-center items-center'>
