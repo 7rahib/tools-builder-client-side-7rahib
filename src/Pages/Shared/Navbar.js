@@ -1,10 +1,22 @@
+import { signOut } from 'firebase/auth';
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
+import auth from '../../firebase.init';
 
 const Navbar = () => {
+    const user = useAuthState(auth);
+
+    const logout = () => {
+        signOut(auth);
+        console.log('Logged out', user)
+        localStorage.removeItem('accessToken')
+    };
+
     const menuItems = <>
         <li><Link to='/portfolio'>Portfolio</Link></li>
         <li><Link to='/blog'>Blogs</Link></li>
+        <li>{user ? <button onClick={logout} className="menu menu-horizontal">Sign Out</button> : <Link to="/login">Log In</Link>}</li>
     </>
 
     return (
