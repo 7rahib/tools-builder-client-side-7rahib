@@ -7,14 +7,14 @@ const ManagerProductRow = ({ product, refetch, index }) => {
         <tr className='hover'>
 
             <td>
-                <div class="flex justify-start items-center space-x-3">
-                    <div class="avatar">
-                        <div class="mask mask-squircle w-12 h-12">
+                <div className="flex justify-start items-center space-x-3">
+                    <div className="avatar">
+                        <div className="mask mask-squircle w-12 h-12">
                             <img src={image} alt={name} />
                         </div>
                     </div>
                     <div>
-                        <div class="font-bold">{name}</div>
+                        <div className="font-bold">{name}</div>
                     </div>
                 </div>
             </td>

@@ -6,27 +6,27 @@ const MyProfile = () => {
     const user = useAuthState(auth)
     return (
         <div>
-            <div class="hero bg-base-300 rounded-3xl">
-                <div class="hero-content text-center">
-                    <div class="max-w-md m-3">
-                        <h1 class="text-2xl font-bold">Your Profile</h1>
-                        <div class="form-control w-full max-w-sm my-1 ">
-                            <label class="label">
-                                <span class="label-text">Name</span>
+            <div className="hero bg-base-300 rounded-3xl">
+                <div className="hero-content text-center">
+                    <div className="max-w-md m-3">
+                        <h1 className="text-2xl font-bold">Your Profile</h1>
+                        <div className="form-control w-full max-w-sm my-1 ">
+                            <label className="label">
+                                <span className="label-text">Name</span>
                             </label>
-                            <input type="text" disabled value={user[0].displayName} class="input input-bordered w-full max-w-sm text-lg" />
+                            <input type="text" disabled value={user[0].displayName} className="input input-bordered w-full max-w-sm text-lg" />
                         </div>
-                        <div class="form-control w-full max-w-sm my-2 ">
-                            <label class="label">
-                                <span class="label-text">Email</span>
+                        <div className="form-control w-full max-w-sm my-2 ">
+                            <label className="label">
+                                <span className="label-text">Email</span>
                             </label>
-                            <input type="email" disabled value={user[0].email} class="input input-bordered w-full max-w-sm text-lg" />
+                            <input type="email" disabled value={user[0].email} className="input input-bordered w-full max-w-sm text-lg" />
                         </div>
-                        <div class="form-control w-full max-w-sm my-2 ">
-                            <label class="label">
-                                <span class="label-text">Address</span>
+                        <div className="form-control w-full max-w-sm my-2 ">
+                            <label className="label">
+                                <span className="label-text">Address</span>
                             </label>
-                            <input type="text" value={user[0].displayName} class="input input-bordered w-full max-w-sm text-lg" />
+                            <input type="text" value={user[0].displayName} className="input input-bordered w-full max-w-sm text-lg" />
                         </div>
                     </div>
                 </div>

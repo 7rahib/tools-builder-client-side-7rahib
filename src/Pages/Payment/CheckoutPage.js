@@ -43,9 +43,9 @@ const CheckoutPage = () => {
     return (
         <div className='mx-5 mb-2'>
             <div className='flex justify-center mt-10'>
-                <div class="card lg:w-lg bg-base-200 shadow-2xl text-neutral-content">
-                    <div class="card-body">
-                        <h2 class="card-title">Welcome <span className='text-warning'>{(user[0]?.displayName)}</span>,</h2>
+                <div className="card lg:w-lg bg-base-200 shadow-2xl text-neutral-content">
+                    <div className="card-body">
+                        <h2 className="card-title">Welcome <span className='text-warning'>{(user[0]?.displayName)}</span>,</h2>
                         <p>You have logged in with <span className='text-warning'>{(user[0]?.email)}</span>. We will contact you there if needed.</p>
                     </div>
                 </div>
