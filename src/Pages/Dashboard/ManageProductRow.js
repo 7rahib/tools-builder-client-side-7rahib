@@ -5,7 +5,6 @@ const ManagerProductRow = ({ product, refetch, index }) => {
 
     return (
         <tr className='hover'>
-
             <td>
                 <div className="flex justify-start items-center space-x-3">
                     <div className="avatar">
@@ -23,7 +22,6 @@ const ManagerProductRow = ({ product, refetch, index }) => {
             </td>
             <td>{quantity} pieces</td>
             <td>{quantity} pieces</td>
-
         </tr>
     );
 };
