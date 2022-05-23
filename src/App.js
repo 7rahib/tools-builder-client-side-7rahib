@@ -16,6 +16,8 @@ import MyProfile from './Pages/Dashboard/MyProfile';
 import ManageProducts from './Pages/Dashboard/ManageProducts';
 import AddProducts from './Pages/Dashboard/AddProducts';
 import ManageUsers from './Pages/Dashboard/ManageUsers';
+import { ToastContainer } from 'react-toastify';
+import ManageOrders from './Pages/Dashboard/ManageOrders';
 
 
 function App() {
@@ -36,11 +38,13 @@ function App() {
           <Route path='review' element={<MyReviews></MyReviews>}></Route>
           <Route path='profile' element={<MyProfile></MyProfile>}></Route>
           <Route path='manageproduct' element={<ManageProducts></ManageProducts>}></Route>
+          <Route path='manageorder' element={<ManageOrders></ManageOrders>}></Route>
           <Route path='addproduct' element={<AddProducts></AddProducts>}></Route>
           <Route path='manageuser' element={<ManageUsers></ManageUsers>}></Route>
         </Route>
       </Routes >
       <Footer></Footer>
+      <ToastContainer />
     </div >
   );
 }

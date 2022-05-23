@@ -12,6 +12,7 @@ const ManageProducts = () => {
 
     return (
         <div>
+            <h3 className='text-2xl m-3'>All Products</h3>
             <div className="overflow-x-auto w-full">
                 <table className="table w-full">
                     <thead>

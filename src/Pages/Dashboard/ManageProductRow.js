@@ -21,7 +21,7 @@ const ManagerProductRow = ({ product, refetch, index }) => {
                 ${price} per unit
             </td>
             <td>{quantity} pieces</td>
-            <td>{quantity} pieces</td>
+            <td><button className='btn btn-sm btn-error text-accent-content'>Remove</button></td>
         </tr>
     );
 };

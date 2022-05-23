@@ -8,8 +8,8 @@ const ManagerUsersRow = ({ user, refetch, index }) => {
             <th>{index + 1}</th>
             <td>{name}</td>
             <td>{email}</td>
-            <td>{email}</td>
-            <td>{email}</td>
+            <td><button className='btn btn-sm btn-warning text-accent-content'>Make Admin</button></td>
+            <td><button className='btn btn-sm btn-error text-accent-content'>Remove</button></td>
         </tr>
     );
 };

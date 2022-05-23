@@ -16,6 +16,7 @@ const ManageUsers = () => {
 
     return (
         <div>
+            <h3 className='text-2xl m-3'>All Users</h3>
             <div className="overflow-x-auto">
                 <table className="table w-full">
                     <thead>

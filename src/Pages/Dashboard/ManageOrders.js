@@ -1,26 +1,17 @@
 import React from 'react';
-import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
-import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
-import MyOrdersRow from './MyOrdersRow';
+import ManagerOrdersRow from './ManagerOrdersRow';
 
-const MyOrders = () => {
-    const user = useAuthState(auth);
-    const email = user[0]?.email;
-    const { data: orders, isLoading, refetch } = useQuery('orders', () => fetch(`http://localhost:5000/order/?email=${email}`, {
-        headers: {
-            'authorization': `Bearer ${localStorage.getItem('accessToken')}`
-        }
-    }).then(res => res.json()))
+const ManageOrders = () => {
+    const { data: allOrders, isLoading, refetch } = useQuery('allOrders', () => fetch('http://localhost:5000/order').then(res => res.json()))
 
     if (isLoading) {
         return <Loading></Loading>
     }
-
     return (
         <div>
-            <h3 className='text-2xl m-3'>My Orders</h3>
+            <h3 className='text-2xl m-3'>All Orders</h3>
             <div className="overflow-x-auto w-full">
                 <table className="table w-full">
                     <thead>
@@ -31,17 +22,17 @@ const MyOrders = () => {
                             <th>Price</th>
                             <th>Quantity</th>
                             <th>Total</th>
-                            <th>Payment</th>
+                            <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
                         {
-                            orders.map((order, index) => <MyOrdersRow
-                                key={order._id}
-                                order={order}
+                            allOrders.map((allOrder, index) => <ManagerOrdersRow
+                                key={allOrder._id}
+                                allOrder={allOrder}
                                 index={index}
                                 refetch={refetch}
-                            ></MyOrdersRow>)
+                            ></ManagerOrdersRow>)
                         }
                     </tbody>
                 </table>
@@ -50,4 +41,4 @@ const MyOrders = () => {
     );
 };
 
-export default MyOrders;
+export default ManageOrders;

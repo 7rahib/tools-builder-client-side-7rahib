@@ -16,8 +16,12 @@ const Navbar = () => {
     const menuItems = <>
         <li><Link to='/portfolio'>Portfolio</Link></li>
         <li><Link to='/blog'>Blogs</Link></li>
-        <li>{user && <Link to='/dashboard'>Dashboard</Link>}</li>
-        <li>{user ? <button onClick={logout} className="menu menu-horizontal">Sign Out</button> : <Link to="/login">Log In</Link>}</li>
+        <li>{(user[0]) ?
+            <>
+                <Link to='/dashboard'>Dashboard</Link>
+                <button onClick={logout} className="menu menu-horizontal">Sign Out</button>
+            </>
+            : <Link to="/login">Log In</Link>}</li>
     </>
 
     return (

@@ -6,10 +6,10 @@ const MyProfile = () => {
     const user = useAuthState(auth)
     return (
         <div>
+            <h1 className="text-2xl m-3">My Profile</h1>
             <div className="hero bg-base-300 rounded-3xl">
                 <div className="hero-content text-center">
                     <div className="max-w-md m-3">
-                        <h1 className="text-2xl font-bold">Your Profile</h1>
                         <div className="form-control w-full max-w-sm my-1 ">
                             <label className="label">
                                 <span className="label-text">Name</span>

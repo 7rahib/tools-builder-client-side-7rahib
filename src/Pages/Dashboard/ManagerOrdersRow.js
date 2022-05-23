@@ -1,10 +1,9 @@
 import React from 'react';
 
-const MyOrdersRow = ({ order, refetch, index }) => {
-    const { userName, quantity, email, name, price } = order
+const ManagerOrdersRow = ({ allOrder, refetch, index }) => {
+    const { userName, quantity, email, name, price } = allOrder
 
     const totalPrice = (parseInt(quantity) * parseInt(price))
-
     return (
         <tr className='hover'>
             <td>
@@ -19,9 +18,9 @@ const MyOrdersRow = ({ order, refetch, index }) => {
             <td>${price} per pieces</td>
             <td>{quantity} pieces</td>
             <td>Total: {totalPrice}</td>
-            <td><button className='btn btn-sm btn-success'>Payment</button></td>
+            <td>Pending</td>
         </tr>
     );
 };
 
-export default MyOrdersRow;
+export default ManagerOrdersRow;

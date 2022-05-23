@@ -41,7 +41,6 @@ const CheckoutPage = () => {
     //         })
     // }
 
-
     const onSubmit = data => {
 
 
@@ -62,12 +61,11 @@ const CheckoutPage = () => {
         })
             .then(res => res.json())
             .then(data => {
-                if (data.success) {
-                    toast(`Order is set for ${data.quantity} pieces of ${data.name}`)
+                if (data.insertedId) {
+                    toast(`Order is set for ${tool.name}`)
                 }
                 else {
-                    toast.error(`Failed to set order for ${data.quantity} pieces of ${data.name}`)
-
+                    toast.error(`Failed to set order for ${tool.name}`)
                 }
                 refetch()
                 reset()
