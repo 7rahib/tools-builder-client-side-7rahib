@@ -5,12 +5,14 @@ import Loading from '../Shared/Loading';
 import auth from '../../firebase.init';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { toast } from 'react-toastify';
+import { useState } from 'react';
 
 const CheckoutPage = () => {
     const { _id } = useParams();
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const user = useAuthState(auth);
     const navigate = useNavigate();
+    const [orderQuantity, setOrderQuantity] = useState(0);
 
 
     const url = `http://localhost:5000/tools/${_id}`;
@@ -41,17 +43,29 @@ const CheckoutPage = () => {
     //         })
     // }
 
-    const onSubmit = data => {
+    const quantityReduce = () => {
 
+        const newQuantity = (parseInt(tool.quantity) - parseInt(orderQuantity));
 
-        const order = {
-            orderId: _id,
-            name: tool.name,
-            price: tool.price,
-            quantity: data.newQuantityValue,
-            email: (user[0].email),
-            userName: (user[0].displayName),
-        }
+        const url = `http://localhost:5000/tools/${_id}`;
+        console.log({ newQuantity })
+        fetch(url, {
+            method: "PUT",
+            headers: {
+                'content-type': 'application/json',
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`
+            },
+            body: JSON.stringify({ quantity: newQuantity })
+        })
+            .then(res => res.json())
+            .then(data => {
+                refetch()
+                reset()
+                return
+            })
+    }
+
+    const placeOrder = order => {
         fetch('http://localhost:5000/order', {
             method: 'POST',
             headers: {
@@ -67,11 +81,33 @@ const CheckoutPage = () => {
                 else {
                     toast.error(`Failed to set order for ${tool.name}`)
                 }
-                refetch()
+
                 reset()
+                return
             })
     }
 
+
+
+
+
+    const onSubmit = data => {
+
+        setOrderQuantity(data.newQuantityValue)
+        const order = {
+            orderId: _id,
+            name: tool.name,
+            price: tool.price,
+            quantity: data.newQuantityValue,
+            email: (user[0].email),
+            userName: (user[0].displayName),
+        }
+
+
+
+        const allData = Promise.all([placeOrder(order), quantityReduce()]);
+        console.log(allData)
+    }
 
     return (
         <div className='mx-5 mb-2'>
