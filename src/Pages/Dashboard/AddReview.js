@@ -97,16 +97,8 @@ const AddReview = () => {
                                     <input
                                         type="text"
                                         className="input input-bordered w-full max-w-xs"
-                                        {...register("image", {
-                                            required: {
-                                                value: true,
-                                                message: 'Image is Required'
-                                            }
-                                        })}
+                                        {...register("image")}
                                     />
-                                    <label className="label">
-                                        {errors.image?.type === 'required' && <span className="label-text-alt text-error">{errors.image.message}</span>}
-                                    </label>
                                 </div>
                                 <div className="form-control w-full max-w-xs">
                                     <label className="label">

@@ -11,7 +11,6 @@ import RequiredAuth from './Pages/Authentication/RequiredAuth';
 import CheckoutPage from './Pages/Payment/CheckoutPage';
 import Dashboard from './Pages/Dashboard/Dashboard';
 import MyOrders from './Pages/Dashboard/MyOrders';
-import MyReviews from './Pages/Dashboard/MyReviews';
 import MyProfile from './Pages/Dashboard/MyProfile';
 import ManageProducts from './Pages/Dashboard/ManageProducts';
 import AddProducts from './Pages/Dashboard/AddProducts';
@@ -37,7 +36,7 @@ function App() {
         <Route path='/dashboard' element={
           <Dashboard></Dashboard>}>
           <Route index element={<MyOrders></MyOrders>}></Route>
-          <Route path='review' element={<MyReviews></MyReviews>}></Route>
+          <Route path='addreview' element={<AddReview></AddReview>}></Route>
           <Route path='profile' element={<MyProfile></MyProfile>}></Route>
           <Route path='manageproduct' element={<ManageProducts></ManageProducts>}></Route>
           <Route path='manageorder' element={<ManageOrders></ManageOrders>}></Route>
