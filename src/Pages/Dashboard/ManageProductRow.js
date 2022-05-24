@@ -4,7 +4,7 @@ const ManagerProductRow = ({ product, refetch, index }) => {
     const { _id, name, quantity, price, image } = product;
 
     const handleDelete = _id => {
-        fetch(`http://localhost:5000/tools/${_id}`, {
+        fetch(`https://cryptic-island-51343.herokuapp.com/tools/${_id}`, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json',

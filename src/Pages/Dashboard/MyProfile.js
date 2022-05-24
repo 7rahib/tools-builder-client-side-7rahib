@@ -11,7 +11,7 @@ const MyProfile = () => {
     const user = useAuthState(auth);
     const email = user[0].email;
 
-    const { data: userProfile, isLoading } = useQuery('userProfile', () => fetch(`http://localhost:5000/user/${email}`).then(res => res.json()))
+    const { data: userProfile, isLoading } = useQuery('userProfile', () => fetch(`https://cryptic-island-51343.herokuapp.com/user/${email}`).then(res => res.json()))
 
     if (isLoading) {
         return <Loading></Loading>
@@ -23,7 +23,7 @@ const MyProfile = () => {
             education: data.education,
             institution: data.institution
         };
-        fetch(`http://localhost:5000/user/${email}`, {
+        fetch(`https://cryptic-island-51343.herokuapp.com/user/${email}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',

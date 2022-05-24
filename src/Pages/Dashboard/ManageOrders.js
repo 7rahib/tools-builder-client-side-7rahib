@@ -10,7 +10,7 @@ import ManagerOrdersRow from './ManagerOrdersRow';
 const ManageOrders = () => {
     const user = useAuthState(auth)
     const navigate = useNavigate()
-    const { data: allOrders, isLoading, refetch } = useQuery('allOrders', () => fetch('http://localhost:5000/order', {
+    const { data: allOrders, isLoading, refetch } = useQuery('allOrders', () => fetch('https://cryptic-island-51343.herokuapp.com/order', {
         headers: {
             'authorization': `Bearer ${localStorage.getItem('accessToken')}`
         }

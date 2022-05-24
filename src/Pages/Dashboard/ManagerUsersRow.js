@@ -5,7 +5,7 @@ const ManagerUsersRow = ({ user, refetch, index }) => {
     const { _id, name, email, role } = user;
 
     const handleDelete = email => {
-        fetch(`http://localhost:5000/user/${email}`, {
+        fetch(`https://cryptic-island-51343.herokuapp.com/user/${email}`, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json',
@@ -19,7 +19,7 @@ const ManagerUsersRow = ({ user, refetch, index }) => {
     }
 
     const makeAdmin = _id => {
-        fetch(`http://localhost:5000/user/admin/${_id}`, {
+        fetch(`https://cryptic-island-51343.herokuapp.com/user/admin/${_id}`, {
             method: 'PUT',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`

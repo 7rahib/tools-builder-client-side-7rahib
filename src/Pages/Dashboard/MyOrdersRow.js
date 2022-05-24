@@ -6,7 +6,7 @@ const MyOrdersRow = ({ order, refetch, index }) => {
     const totalPrice = (parseInt(quantity) * parseInt(price))
 
     const handleDelete = _id => {
-        fetch(`http://localhost:5000/order/${_id}`, {
+        fetch(`https://cryptic-island-51343.herokuapp.com/order/${_id}`, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json',

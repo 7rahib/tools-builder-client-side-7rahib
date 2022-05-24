@@ -9,7 +9,7 @@ const MyReviews = () => {
     const user = useAuthState(auth);
     const email = user[0]?.email;
 
-    const { data: reviews, isLoading } = useQuery('reviews', () => fetch(`http://localhost:5000/reviews/${email}`, {
+    const { data: reviews, isLoading } = useQuery('reviews', () => fetch(`https://cryptic-island-51343.herokuapp.com/reviews/${email}`, {
         headers: {
             'authorization': `Bearer ${localStorage.getItem('accessToken')}`
         }

@@ -11,7 +11,7 @@ const MyOrders = () => {
     const user = useAuthState(auth);
     const email = user[0]?.email;
     const navigate = useNavigate()
-    const { data: orders, isLoading, refetch } = useQuery('orders', () => fetch(`http://localhost:5000/order/${email}`, {
+    const { data: orders, isLoading, refetch } = useQuery('orders', () => fetch(`https://cryptic-island-51343.herokuapp.com/order/${email}`, {
         headers: {
             'authorization': `Bearer ${localStorage.getItem('accessToken')}`
         }
