@@ -23,7 +23,7 @@ const ToolsCard = ({ tool }) => {
                     <p><span className='text-warning'>{min_quantity} pieces</span> is our minimum order limit</p>
                     <p className='text-success font-semibold '><span className='text-2xl'>${price}</span> per unit price</p>
                     <div className="card-actions justify-end">
-                        <button onClick={() => handleCheckout(_id)} className="btn btn-info">Order</button>
+                        <button onClick={() => handleCheckout(_id)} className="btn btn-info text-accent-content">Order</button>
                     </div>
                 </div>
             </div>

@@ -157,7 +157,7 @@ const CheckoutPage = () => {
                                     {errors.newQuantityValue?.type === 'max' && <span className="label-text-alt text-error">{errors.newQuantityValue.message}</span>}
                                 </label>
                             </div>
-                            <input className='btn btn-info mt-2' type="submit" value="Confirm Order" />
+                            <input className='btn btn-info mt-2 text-accent-content' type="submit" value="Confirm Order" />
                         </form>
                     </div>
                 </div>

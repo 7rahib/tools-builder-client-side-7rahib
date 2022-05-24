@@ -2,16 +2,47 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import auth from '../../firebase.init';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { useQuery } from 'react-query';
+import Loading from '../Shared/Loading';
 
 const AddReview = () => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const user = useAuthState(auth)
 
+    const { data: toolsName, isLoading } = useQuery('toolsname', () => fetch('http://localhost:5000/tools', {
+        headers: {
+            'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+        }
+    }).then(res => res.json()))
+
+    if (isLoading) {
+        return <Loading></Loading>
+    }
 
     const onSubmit = data => {
-        console.log(data, user[0].displayName, user[0].email)
-        reset()
+        const review = {
+            toolName: data.name,
+            userName: user[0].displayName,
+            email: user[0].email,
+            userReview: data.review,
+            rating: data.rating,
+            image: data.image
+        };
+        fetch('http://localhost:5000/reviews', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+            },
+            body: JSON.stringify(review)
+        })
+            .then(res => res.json())
+            .then(data => {
+                reset();
+            })
     }
+
+
 
     return (
         <div>
@@ -32,19 +63,14 @@ const AddReview = () => {
                                     <label className="label">
                                         <span className="label-text">Tool Name</span>
                                     </label>
-                                    <input
-                                        type="text"
-                                        className="input input-bordered w-full max-w-xs"
-                                        {...register("name", {
-                                            required: {
-                                                value: true,
-                                                message: 'Name is Required'
-                                            }
-                                        })}
-                                    />
-                                    <label className="label">
-                                        {errors.name?.type === 'required' && <span className="label-text-alt text-error">{errors.name.message}</span>}
-                                    </label>
+                                    <select {...register("name")} className="select w-full input-bordered max-w-xs">
+                                        {
+                                            toolsName.map(toolName => <option
+                                                key={toolName._id}
+                                                value={toolName.name}
+                                            >{toolName.name}</option>)
+                                        }
+                                    </select>
                                 </div>
                                 <div className="form-control w-full max-w-xs">
                                     <label className="label">
