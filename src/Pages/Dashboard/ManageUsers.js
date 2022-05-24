@@ -1,15 +1,12 @@
 import { signOut } from 'firebase/auth';
 import React from 'react';
-import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
 import { useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
-import useAdmin from '../../hooks/useAdmin';
 import Loading from '../Shared/Loading';
 import ManagerUsersRow from './ManagerUsersRow';
 
 const ManageUsers = () => {
-    const user = useAuthState(auth)
     const navigate = useNavigate()
     const { data: users, isLoading, refetch } = useQuery('users', () => fetch('http://localhost:5000/user', {
         headers: {
