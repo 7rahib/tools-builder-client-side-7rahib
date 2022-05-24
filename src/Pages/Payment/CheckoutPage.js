@@ -5,14 +5,12 @@ import Loading from '../Shared/Loading';
 import auth from '../../firebase.init';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { toast } from 'react-toastify';
-import { useState } from 'react';
 
 const CheckoutPage = () => {
     const { _id } = useParams();
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const user = useAuthState(auth);
     const navigate = useNavigate();
-    const [orderQuantity, setOrderQuantity] = useState(0);
 
 
     const url = `http://localhost:5000/tools/${_id}`;
@@ -43,9 +41,9 @@ const CheckoutPage = () => {
     //         })
     // }
 
-    const quantityReduce = () => {
+    const quantityReduce = (gq) => {
 
-        const newQuantity = (parseInt(tool.quantity) - parseInt(orderQuantity));
+        const newQuantity = parseInt(tool.quantity) - parseInt(gq);
 
         const url = `http://localhost:5000/tools/${_id}`;
         console.log({ newQuantity })
@@ -55,7 +53,7 @@ const CheckoutPage = () => {
                 'content-type': 'application/json',
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
             },
-            body: JSON.stringify({ quantity: newQuantity })
+            body: JSON.stringify({ newQuantity })
         })
             .then(res => res.json())
             .then(data => {
@@ -89,12 +87,14 @@ const CheckoutPage = () => {
     }
 
 
+    const min_quantity = tool.min_quantity;
+    const max_quantity = tool.quantity;
 
 
 
-    const onSubmit = data => {
+    const onSubmit = (data) => {
 
-        setOrderQuantity(data.newQuantityValue)
+        const gq = data.newQuantityValue
         const order = {
             orderId: _id,
             name: tool.name,
@@ -103,7 +103,7 @@ const CheckoutPage = () => {
             email: (user[0].email),
             userName: (user[0].displayName),
         }
-        const allData = Promise.all([placeOrder(order), quantityReduce()]);
+        const allData = Promise.all([placeOrder(order), quantityReduce(gq)]);
         console.log(allData)
     }
 
@@ -138,12 +138,23 @@ const CheckoutPage = () => {
                                     {...register("newQuantityValue", {
                                         required: {
                                             value: true,
-                                            message: 'newQuantity is Required'
+                                            message: 'Order quantity is Required'
                                         },
+                                        min: {
+                                            value: min_quantity,
+                                            message: 'You can not order less then minimum quantity'
+                                        },
+                                        max: {
+                                            value: max_quantity,
+                                            message: 'You can not order more than available quantity'
+                                        }
+
                                     })}
                                 />
                                 <label className="label">
                                     {errors.newQuantityValue?.type === 'required' && <span className="label-text-alt text-error">{errors.newQuantityValue.message}</span>}
+                                    {errors.newQuantityValue?.type === 'min' && <span className="label-text-alt text-error">{errors.newQuantityValue.message}</span>}
+                                    {errors.newQuantityValue?.type === 'max' && <span className="label-text-alt text-error">{errors.newQuantityValue.message}</span>}
                                 </label>
                             </div>
                             <input className='btn btn-info mt-2' type="submit" value="Confirm Order" />

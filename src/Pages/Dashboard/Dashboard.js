@@ -12,7 +12,6 @@ const Dashboard = () => {
 
 
     const [admin] = useAdmin(user)
-    console.log(admin)
 
 
     const [token] = useToken(user)

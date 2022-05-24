@@ -18,6 +18,7 @@ import AddProducts from './Pages/Dashboard/AddProducts';
 import ManageUsers from './Pages/Dashboard/ManageUsers';
 import { ToastContainer } from 'react-toastify';
 import ManageOrders from './Pages/Dashboard/ManageOrders';
+import AddReview from './Pages/Dashboard/AddReview';
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
         <Route path='/signup' element={<Signup />}></Route>
         <Route path='/portfolio' element={<Portfolio />}></Route>
         <Route path='/tools/:_id' element={<RequiredAuth><CheckoutPage /></RequiredAuth>}></Route>
+        <Route path='/addreview' element={<RequiredAuth><AddReview /></RequiredAuth>}></Route>
         <Route path='/dashboard' element={
           <Dashboard></Dashboard>}>
           <Route index element={<MyOrders></MyOrders>}></Route>
