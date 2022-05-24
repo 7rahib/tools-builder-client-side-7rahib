@@ -26,7 +26,7 @@ const MyReviews = () => {
             <div className='flex justify-center'>
                 <div className='grid sm:grid-cols-1 lg:grid-cols-3 justify-center m-3 gap-4'>
                     {
-                        reviews.map(review => <ReviewsCard
+                        reviews?.map(review => <ReviewsCard
                             key={review._id}
                             review={review}
                         ></ReviewsCard>)
