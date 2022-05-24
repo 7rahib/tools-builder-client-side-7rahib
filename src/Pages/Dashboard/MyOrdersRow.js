@@ -15,13 +15,13 @@ const MyOrdersRow = ({ order, refetch, index }) => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
                 refetch()
             })
     }
 
     return (
         <tr className='hover'>
+            <td>{index + 1}</td>
             <td>
                 <div className="font-bold">{userName}</div>
             </td>

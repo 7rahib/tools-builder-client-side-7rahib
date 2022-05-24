@@ -17,6 +17,7 @@ const ManageProducts = () => {
                 <table className="table w-full">
                     <thead>
                         <tr>
+                            <th></th>
                             <th>Name</th>
                             <th>Price</th>
                             <th>Quantity</th>

@@ -1,10 +1,28 @@
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
+import { useNavigate } from 'react-router-dom';
+import auth from '../../firebase.init';
+import useToken from '../../hooks/useToken';
 import Loading from '../Shared/Loading';
 import ManagerOrdersRow from './ManagerOrdersRow';
 
 const ManageOrders = () => {
-    const { data: allOrders, isLoading, refetch } = useQuery('allOrders', () => fetch('http://localhost:5000/order').then(res => res.json()))
+    const user = useAuthState(auth)
+    const navigate = useNavigate()
+    const { data: allOrders, isLoading, refetch } = useQuery('allOrders', () => fetch('http://localhost:5000/order', {
+        headers: {
+            'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+        }
+    }).then(res => res.json()))
+
+    const [token] = useToken(user)
+
+
+
+    if (token) {
+        navigate('/login')
+    }
 
     if (isLoading) {
         return <Loading></Loading>
@@ -16,6 +34,7 @@ const ManageOrders = () => {
                 <table className="table w-full">
                     <thead>
                         <tr>
+                            <th></th>
                             <th>Name</th>
                             <th>Email</th>
                             <th>Product</th>
@@ -27,7 +46,7 @@ const ManageOrders = () => {
                     </thead>
                     <tbody>
                         {
-                            allOrders.map((allOrder, index) => <ManagerOrdersRow
+                            allOrders?.map((allOrder, index) => <ManagerOrdersRow
                                 key={allOrder._id}
                                 allOrder={allOrder}
                                 index={index}

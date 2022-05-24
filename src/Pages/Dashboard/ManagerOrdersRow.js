@@ -6,6 +6,7 @@ const ManagerOrdersRow = ({ allOrder, refetch, index }) => {
     const totalPrice = (parseInt(quantity) * parseInt(price))
     return (
         <tr className='hover'>
+            <td>{index + 1}</td>
             <td>
                 <div className="font-bold">{userName}</div>
             </td>

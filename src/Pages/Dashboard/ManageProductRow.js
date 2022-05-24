@@ -13,13 +13,13 @@ const ManagerProductRow = ({ product, refetch, index }) => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
                 refetch()
             })
     }
 
     return (
         <tr className='hover'>
+            <td>{index + 1}</td>
             <td>
                 <div className="flex justify-start items-center space-x-3">
                     <div className="avatar">

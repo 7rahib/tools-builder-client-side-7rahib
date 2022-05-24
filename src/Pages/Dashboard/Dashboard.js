@@ -2,9 +2,27 @@ import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, Outlet } from 'react-router-dom';
 import auth from '../../firebase.init';
+import useAdmin from '../../hooks/useAdmin';
+import useToken from '../../hooks/useToken';
+import Loading from '../Shared/Loading';
 
 const Dashboard = () => {
     const user = useAuthState(auth)
+
+
+
+    const [admin] = useAdmin(user)
+    console.log(admin)
+
+
+    const [token] = useToken(user)
+
+
+    if (!(user[0]?.email) || token) {
+        return <Loading></Loading>
+    }
+
+
     return (
         <div>
             <h3 className='text-3xl text-center mt-5 text-info'>Your Dashboard</h3>
@@ -26,14 +44,19 @@ const Dashboard = () => {
                             <Link to='/dashboard/review'>My Reviews</Link>
                         </>}</li>
                         <li><Link to='/dashboard/profile'>My Profile</Link></li>
-                        <li><Link to='/dashboard/manageproduct'>Manage All Products</Link></li>
-                        <li><Link to='/dashboard/manageorder'>Manage All Orders</Link></li>
-                        <li><Link to='/dashboard/addproduct'>Add New Products</Link></li>
-                        <li><Link to='/dashboard/manageuser'>Manage All User</Link></li>
+                        {
+                            admin === true ?
+                                <>
+                                    <li><Link to='/dashboard/manageproduct'>Manage All Products</Link></li>
+                                    <li><Link to='/dashboard/manageorder'>Manage All Orders</Link></li>
+                                    <li><Link to='/dashboard/addproduct'>Add New Products</Link></li>
+                                    <li><Link to='/dashboard/manageuser'>Manage All User</Link></li>
+                                </> : ''
+                        }
                     </ul>
                 </div>
-            </div >
-        </div>
+            </div>
+        </div >
     );
 };
 

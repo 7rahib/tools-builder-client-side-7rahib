@@ -69,7 +69,8 @@ const CheckoutPage = () => {
         fetch('http://localhost:5000/order', {
             method: 'POST',
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`
             },
             body: JSON.stringify(order)
         })
@@ -102,9 +103,6 @@ const CheckoutPage = () => {
             email: (user[0].email),
             userName: (user[0].displayName),
         }
-
-
-
         const allData = Promise.all([placeOrder(order), quantityReduce()]);
         console.log(allData)
     }

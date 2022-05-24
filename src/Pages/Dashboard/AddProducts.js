@@ -26,7 +26,6 @@ const AddProducts = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
                 reset()
                 navigate('/dashboard/manageproduct')
             })
