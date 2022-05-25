@@ -105,7 +105,7 @@ const MyProfile = () => {
                                     />
                                 </div>
                             </div>
-                            <input className='btn btn-info w-full max-w-xs text-accent-content mt-2' type="submit" value="Post Your Review" />
+                            <input className='btn btn-info w-full max-w-xs text-accent-content mt-2' type="submit" value="Update Profile" />
                         </form>
                     </div>
                 </div>

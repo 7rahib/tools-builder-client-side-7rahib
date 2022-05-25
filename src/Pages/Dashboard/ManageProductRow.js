@@ -1,20 +1,32 @@
 import React from 'react';
+import swal from 'sweetalert';
 
 const ManagerProductRow = ({ product, refetch, index }) => {
     const { _id, name, quantity, price, image } = product;
 
     const handleDelete = _id => {
-        fetch(`https://cryptic-island-51343.herokuapp.com/tools/${_id}`, {
-            method: 'DELETE',
-            headers: {
-                'content-type': 'application/json',
-                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
-            }
+        swal({
+            title: "Are you sure?",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
         })
-            .then(res => res.json())
-            .then(data => {
-                refetch()
-            })
+            .then((willDelete) => {
+                if (willDelete) {
+                    fetch(`https://cryptic-island-51343.herokuapp.com/tools/${_id}`, {
+                        method: 'DELETE',
+                        headers: {
+                            'content-type': 'application/json',
+                            'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                        }
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            refetch()
+                        })
+                } else {
+                }
+            });
     }
 
     return (

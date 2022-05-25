@@ -1,43 +1,68 @@
 import React from 'react';
 import { toast } from 'react-toastify';
+import swal from 'sweetalert';
 
 const ManagerUsersRow = ({ user, refetch, index }) => {
     const { _id, name, email, role } = user;
 
     const handleDelete = email => {
-        fetch(`https://cryptic-island-51343.herokuapp.com/user/${email}`, {
-            method: 'DELETE',
-            headers: {
-                'content-type': 'application/json',
-                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
-            }
+        swal({
+            title: "Are you sure?",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
         })
-            .then(res => res.json())
-            .then(data => {
-                refetch()
-            })
+            .then((willDelete) => {
+                if (willDelete) {
+                    fetch(`https://cryptic-island-51343.herokuapp.com/user/${email}`, {
+                        method: 'DELETE',
+                        headers: {
+                            'content-type': 'application/json',
+                            'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                        }
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            refetch()
+                        })
+                } else {
+                }
+            });
     }
 
     const makeAdmin = _id => {
-        fetch(`https://cryptic-island-51343.herokuapp.com/user/admin/${_id}`, {
-            method: 'PUT',
-            headers: {
-                authorization: `Bearer ${localStorage.getItem('accessToken')}`
-            }
-        })
-            .then(res => {
-                if (res.status === 403) {
-                    toast.error('Only an admin make make another admin');
-                }
-                return res.json()
-            })
-            .then(data => {
-                if (data.modifiedCount > 0) {
-                    refetch();
-                    toast.success(`Successfully made an admin`);
-                }
 
-            })
+        swal({
+            title: "Are you sure?",
+            text: "This user will have Admin power!!!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    fetch(`https://cryptic-island-51343.herokuapp.com/user/admin/${_id}`, {
+                        method: 'PUT',
+                        headers: {
+                            authorization: `Bearer ${localStorage.getItem('accessToken')}`
+                        }
+                    })
+                        .then(res => {
+                            if (res.status === 403) {
+                                toast.error('Only an admin make make another admin');
+                            }
+                            return res.json()
+                        })
+                        .then(data => {
+                            if (data.modifiedCount > 0) {
+                                refetch();
+                                toast.success(`Successfully made an admin`);
+                            }
+
+                        })
+                } else {
+                }
+            });
     }
 
     return (

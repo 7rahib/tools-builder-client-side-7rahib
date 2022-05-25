@@ -1,4 +1,5 @@
 import React from 'react';
+import swal from 'sweetalert';
 
 const MyOrdersRow = ({ order, refetch, index }) => {
     const { _id, userName, quantity, email, name, price } = order
@@ -6,17 +7,29 @@ const MyOrdersRow = ({ order, refetch, index }) => {
     const totalPrice = (parseInt(quantity) * parseInt(price))
 
     const handleDelete = _id => {
-        fetch(`https://cryptic-island-51343.herokuapp.com/order/${_id}`, {
-            method: 'DELETE',
-            headers: {
-                'content-type': 'application/json',
-                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
-            }
+        swal({
+            title: "Are you sure?",
+            text: "This user will have Admin power!!!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
         })
-            .then(res => res.json())
-            .then(data => {
-                refetch()
-            })
+            .then((willDelete) => {
+                if (willDelete) {
+                    fetch(`https://cryptic-island-51343.herokuapp.com/order/${_id}`, {
+                        method: 'DELETE',
+                        headers: {
+                            'content-type': 'application/json',
+                            'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                        }
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            refetch()
+                        })
+                } else {
+                }
+            });
     }
 
     return (

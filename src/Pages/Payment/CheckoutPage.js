@@ -161,10 +161,8 @@ const CheckoutPage = () => {
                         </form>
                     </div>
                 </div>
-            </div >
+            </div>
         </div>
-
-
     );
 };
 

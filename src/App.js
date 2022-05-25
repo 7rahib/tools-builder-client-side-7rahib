@@ -44,8 +44,9 @@ function App() {
           <Route path='manageuser' element={<ManageUsers></ManageUsers>}></Route>
         </Route>
       </Routes >
+      <ToastContainer></ToastContainer>
       <Footer></Footer>
-      <ToastContainer />
+
     </div >
   );
 }
