@@ -3,9 +3,8 @@ import { Link } from 'react-router-dom';
 import swal from 'sweetalert';
 
 const MyOrdersRow = ({ order, refetch, index }) => {
-    const { _id, userName, quantity, email, name, price, total } = order
+    const { _id, userName, quantity, email, name, price, total, paid, transactionId } = order
 
-    const totalPrice = (parseInt(quantity) * parseInt(price))
 
     const handleDelete = id => {
         swal({
@@ -49,11 +48,20 @@ const MyOrdersRow = ({ order, refetch, index }) => {
             <td>{quantity} pieces</td>
             <td>Total: {total}</td>
             <td>
+                {(price && !paid) && <Link to={`/dashboard/payment/${_id}`}><button className='btn btn-sm btn-success text-accent-content'>Pay</button></Link>}
+                {(price && paid) && <>
+                    <p><span className='text-success'>Payment completed</span></p>
+                    <p className='text-xs'>Transaction id: <span className='text-success'>{transactionId}</span></p>
+                </>}
+            </td>
+            <td>
                 {
-                    price && <Link to={`/dashboard/payment/${_id}`}><button className='btn btn-sm btn-success'>Payment</button></Link>
+                    !paid && <button onClick={() => handleDelete(_id)} className='btn btn-sm btn-error text-accent-content'>Cancel</button>
+                }
+                {
+                    paid && <button disabled onClick={() => handleDelete(_id)} className='btn btn-sm btn-error text-accent-content'>Cancel</button>
                 }
             </td>
-            <td><button onClick={() => handleDelete(_id)} className='btn btn-sm btn-error text-accent-content'>Cancel</button></td>
         </tr >
     );
 };
