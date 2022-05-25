@@ -1,12 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import swal from 'sweetalert';
 
 const MyOrdersRow = ({ order, refetch, index }) => {
-    const { _id, userName, quantity, email, name, price } = order
+    const { _id, userName, quantity, email, name, price, total } = order
 
     const totalPrice = (parseInt(quantity) * parseInt(price))
 
-    const handleDelete = _id => {
+    const handleDelete = id => {
         swal({
             title: "Are you sure?",
             text: "This user will have Admin power!!!",
@@ -16,7 +17,7 @@ const MyOrdersRow = ({ order, refetch, index }) => {
         })
             .then((willDelete) => {
                 if (willDelete) {
-                    fetch(`https://cryptic-island-51343.herokuapp.com/order/${_id}`, {
+                    fetch(`https://cryptic-island-51343.herokuapp.com/order/${id}`, {
                         method: 'DELETE',
                         headers: {
                             'content-type': 'application/json',
@@ -46,10 +47,14 @@ const MyOrdersRow = ({ order, refetch, index }) => {
             </td>
             <td>${price} per pieces</td>
             <td>{quantity} pieces</td>
-            <td>Total: {totalPrice}</td>
-            <td><button className='btn btn-sm btn-success'>Payment</button></td>
+            <td>Total: {total}</td>
+            <td>
+                {
+                    price && <Link to={`/dashboard/payment/${_id}`}><button className='btn btn-sm btn-success'>Payment</button></Link>
+                }
+            </td>
             <td><button onClick={() => handleDelete(_id)} className='btn btn-sm btn-error text-accent-content'>Cancel</button></td>
-        </tr>
+        </tr >
     );
 };
 

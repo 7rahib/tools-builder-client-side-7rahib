@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ManagerOrdersRow = ({ allOrder, refetch, index }) => {
-    const { userName, quantity, email, name, price } = allOrder
+    const { userName, quantity, email, name, price, total } = allOrder
 
     const totalPrice = (parseInt(quantity) * parseInt(price))
     return (
@@ -18,7 +18,7 @@ const ManagerOrdersRow = ({ allOrder, refetch, index }) => {
             </td>
             <td>${price} per pieces</td>
             <td>{quantity} pieces</td>
-            <td>Total: {totalPrice}</td>
+            <td>Total: {total}</td>
             <td>Pending</td>
         </tr>
     );

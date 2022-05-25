@@ -18,6 +18,8 @@ import ManageUsers from './Pages/Dashboard/ManageUsers';
 import { ToastContainer } from 'react-toastify';
 import ManageOrders from './Pages/Dashboard/ManageOrders';
 import AddReview from './Pages/Dashboard/AddReview';
+import Payment from './Pages/Dashboard/Payment';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function App() {
@@ -38,6 +40,7 @@ function App() {
           <Route index element={<MyOrders></MyOrders>}></Route>
           <Route path='addreview' element={<AddReview></AddReview>}></Route>
           <Route path='profile' element={<MyProfile></MyProfile>}></Route>
+          <Route path='payment/:id' element={<Payment></Payment>}></Route>
           <Route path='manageproduct' element={<ManageProducts></ManageProducts>}></Route>
           <Route path='manageorder' element={<ManageOrders></ManageOrders>}></Route>
           <Route path='addproduct' element={<AddProducts></AddProducts>}></Route>

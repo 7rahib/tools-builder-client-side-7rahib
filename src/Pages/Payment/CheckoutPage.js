@@ -8,7 +8,7 @@ import { toast } from 'react-toastify';
 
 const CheckoutPage = () => {
     const { _id } = useParams();
-    const { register, formState: { errors }, handleSubmit, reset } = useForm();
+    const { register, formState: { errors, isDirty, isValid }, handleSubmit, reset } = useForm({ mode: "onChange" });
     const user = useAuthState(auth);
     const navigate = useNavigate();
 
@@ -75,7 +75,7 @@ const CheckoutPage = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.insertedId) {
-                    toast(`Order is set for ${tool.name}`)
+                    toast.success(`Order is set for ${tool.name}`)
                 }
                 else {
                     toast.error(`Failed to set order for ${tool.name}`)
@@ -100,6 +100,7 @@ const CheckoutPage = () => {
             name: tool.name,
             price: tool.price,
             quantity: data.newQuantityValue,
+            total: (tool.price * data.newQuantityValue),
             email: (user[0].email),
             userName: (user[0].displayName),
         }
@@ -157,7 +158,7 @@ const CheckoutPage = () => {
                                     {errors.newQuantityValue?.type === 'max' && <span className="label-text-alt text-error">{errors.newQuantityValue.message}</span>}
                                 </label>
                             </div>
-                            <input className='btn btn-info mt-2 text-accent-content' type="submit" value="Confirm Order" />
+                            <input disabled={!isDirty || !isValid} className='btn btn-info mt-2 text-accent-content' type="submit" value="Confirm Order" />
                         </form>
                     </div>
                 </div>
