@@ -36,13 +36,13 @@ const ManagerOrdersRow = ({ allOrder, refetch, index }) => {
             <td>Total: {total}</td>
             <td>
                 {
-                    paid && !shipped ? < button onClick={() => handleSubmit(_id)} className='btn btn-sm btn-success'>Shipped</button> : ''
+                    paid && !shipped ? < button onClick={() => handleSubmit(_id)} className='btn btn-xs btn-warning'>Shipped</button> : ''
                 }
                 {
-                    !paid && < button className='btn btn-sm btn-ghost'>Pending</button>
+                    !paid && < button className='btn btn-xs btn-ghost'>Pending</button>
                 }
                 {
-                    shipped && < button className='btn btn-sm btn-ghost'>Delivered</button>
+                    shipped && < button className='btn btn-xs btn-success'>Delivered</button>
                 }
             </td>
         </tr >

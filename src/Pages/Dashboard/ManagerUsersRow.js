@@ -71,7 +71,7 @@ const ManagerUsersRow = ({ user, refetch, index }) => {
             <td>{name}</td>
             <td>{email}</td>
             <td>{role === 'admin' ? <button className="btn btn-xs btn-success" disabled="disabled">Already Admin</button> : <button onClick={() => makeAdmin(email)} className="btn btn-warning btn-sm">Make Admin</button>}</td>
-            <td><button onClick={() => handleDelete(_id)} className='btn btn-sm btn-error text-accent-content'>Remove</button></td>
+            <td><button onClick={() => handleDelete(_id)} className='btn btn-xs btn-error text-accent-content'>Remove</button></td>
         </tr>
     );
 };

@@ -44,22 +44,22 @@ const MyOrdersRow = ({ order, refetch, index }) => {
             <td>
                 {name}
             </td>
-            <td>${price} per pieces</td>
+            <td>${price}</td>
             <td>{quantity} pieces</td>
             <td>Total: {total}</td>
             <td>
                 {(price && !paid) && <Link to={`/dashboard/payment/${_id}`}><button className='btn btn-sm btn-success text-accent-content'>Pay</button></Link>}
                 {(price && paid) && <>
                     <p><span className='text-success'>Payment completed</span></p>
-                    <p className='text-xs'>Transaction id: <span className='text-success'>{transactionId}</span></p>
+                    <p className='text-xs'>Transaction: <span className='text-success'>{transactionId}</span></p>
                 </>}
             </td>
             <td>
                 {
-                    !paid && <button onClick={() => handleDelete(_id)} className='btn btn-sm btn-error text-accent-content'>Cancel</button>
+                    !paid && <button onClick={() => handleDelete(_id)} className='btn btn-xs btn-error text-accent-content'>Cancel</button>
                 }
                 {
-                    paid && <button disabled onClick={() => handleDelete(_id)} className='btn btn-sm btn-error text-accent-content'>Cancel</button>
+                    paid && <button disabled onClick={() => handleDelete(_id)} className='btn btn-xs btn-error text-accent-content'>Cancel</button>
                 }
             </td>
         </tr >
