@@ -55,7 +55,7 @@ const Blogs = () => {
             </div>
             <div class="card w-full bg-base-300 shadow-xl my-5">
                 <div class="card-body">
-                    <h2 class="card-title">How will you improve the performance of a React Application ?</h2>
+                    <h2 class="card-title">Why you do not set the state directly in React. For example, if you have const [products, setProducts] = useState([]). Why you do not set products = [...] instead, you use the setProducts</h2>
                     <p>Using setState in React in the right way is very important. Data flows from top to bottom in the component tree. If we set the state in the top component, all the child components are re-rendered. Setting this state in the wrong way triggers an infinite loop among components which will break our application. The idea behind that is that in order to track changes in state and than re-render the component according to the changes, you have to use setState, because after setState, the render function is triggered.</p>
                 </div>
             </div>
