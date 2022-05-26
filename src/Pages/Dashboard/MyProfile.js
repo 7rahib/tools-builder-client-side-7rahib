@@ -60,6 +60,20 @@ const MyProfile = () => {
                                     </div>
                                 </div>
                             </div>
+                            <div class="my-5">
+
+                                <div class="flex justify-between  group cursor-pointer">
+                                    <div>
+                                        <p class="text-lg text-neutral-400 group-hover:text-red-500 duration-150 ">Phone: {userProfile.phone}</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex justify-between group  cursor-pointer">
+                                    <div>
+                                        <p class="text-lg text-neutral-400 group-hover:text-red-500 duration-150">LinkedIn: {userProfile.linkedIn}</p>
+                                    </div>
+                                </div>
+                            </div>
                             <Link to='/dashboard/updateprofile'><button className='btn btn-info w-full max-w-xs text-accent-content mt-2'>Update Profile</button></Link>
                         </div>
 

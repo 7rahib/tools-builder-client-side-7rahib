@@ -38,11 +38,12 @@ const Dashboard = () => {
                 <div className="drawer-side">
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                     <ul className="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
-                        <li>{(user[0]) && <>
-                            <Link to='/dashboard'>My Orders</Link>
-                            <Link to='/dashboard/addreview'>Add My Reviews</Link>
-                        </>}</li>
-                        <li><Link to='/dashboard/profile'>My Profile</Link></li>
+                        <li><Link to='/dashboard'>My Profile</Link></li>
+                        <li>{(user[0]) && !admin ? <>
+
+                            <Link to='/dashboard/myorder'>My Orders</Link>
+                            <Link to='/dashboard/addReview'>Add My Reviews</Link>
+                        </> : ''}</li>
                         {
                             admin === true ?
                                 <>

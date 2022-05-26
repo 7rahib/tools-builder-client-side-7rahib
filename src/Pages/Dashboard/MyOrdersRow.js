@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import swal from 'sweetalert';
 
-const MyOrdersRow = ({ order, index }) => {
+const MyOrdersRow = ({ order, refetch }) => {
     const { _id, userName, quantity, email, name, price, total, paid, transactionId } = order
 
 
@@ -25,6 +25,7 @@ const MyOrdersRow = ({ order, index }) => {
                     })
                         .then(res => res.json())
                         .then(data => {
+                            refetch()
                         })
                 } else {
                 }

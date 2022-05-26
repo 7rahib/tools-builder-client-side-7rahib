@@ -13,7 +13,7 @@ const MyOrders = () => {
     const navigate = useNavigate();
 
     const url = `https://pure-mesa-75303.herokuapp.com/order/${email}`;
-    const { data: orderInfo, isLoading } = useQuery('orderInfo', () => fetch(url, {
+    const { data: orderInfo, isLoading, refetch } = useQuery('orderInfo', () => fetch(url, {
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
         },
@@ -54,6 +54,7 @@ const MyOrders = () => {
                                 key={order._id}
                                 order={order}
                                 index={index}
+                                refetch={refetch}
                             ></MyOrdersRow>)
                         }
                     </tbody>

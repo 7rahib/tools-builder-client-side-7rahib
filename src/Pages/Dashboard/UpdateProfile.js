@@ -15,7 +15,9 @@ const UpdateProfile = () => {
         const updateProfile = {
             address: data.address,
             education: data.education,
-            institution: data.institution
+            institution: data.institution,
+            phone: data.phone,
+            linkedIn: data.linkedIn
         };
         fetch(`https://pure-mesa-75303.herokuapp.com/user/${email}`, {
             method: 'PUT',
@@ -121,6 +123,46 @@ const UpdateProfile = () => {
                                     />
                                     <label className="label">
                                         {errors.institution?.type === 'required' && <span className="label-text-alt text-error">{errors.institution.message}</span>}
+                                    </label>
+                                </div>
+                            </div>
+                            <div className='flex'>
+                                <div className="form-control w-full max-w-xs mr-2">
+                                    <label className="label">
+                                        <span className="label-text">Phone Number</span>
+                                    </label>
+                                    <input
+                                        type="text"
+                                        placeholder="Phone Number"
+                                        className="input input-bordered w-full max-w-xs"
+                                        {...register("phone", {
+                                            required: {
+                                                value: true,
+                                                message: 'Phone is Required'
+                                            }
+                                        })}
+                                    />
+                                    <label className="label">
+                                        {errors.phone?.type === 'required' && <span className="label-text-alt text-error">{errors.phone.message}</span>}
+                                    </label>
+                                </div>
+                                <div className="form-control w-full max-w-xs">
+                                    <label className="label">
+                                        <span className="label-text">LinkedIn</span>
+                                    </label>
+                                    <input
+                                        type="text"
+                                        placeholder="LinkedIn"
+                                        className="input input-bordered w-full max-w-xs"
+                                        {...register("linkedIn", {
+                                            required: {
+                                                value: true,
+                                                message: 'LinkedIn is Required'
+                                            }
+                                        })}
+                                    />
+                                    <label className="label">
+                                        {errors.linkedIn?.type === 'required' && <span className="label-text-alt text-error">{errors.linkedIn.message}</span>}
                                     </label>
                                 </div>
                             </div>

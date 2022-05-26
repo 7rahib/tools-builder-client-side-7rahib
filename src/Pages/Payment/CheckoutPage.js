@@ -157,6 +157,38 @@ const CheckoutPage = () => {
                                     {errors.newQuantityValue?.type === 'max' && <span className="label-text-alt text-error">{errors.newQuantityValue.message}</span>}
                                 </label>
                             </div>
+                            <div className="form-control w-full max-w-xs">
+                                <input
+                                    type="text"
+                                    className="input input-bordered w-full max-w-xs"
+                                    placeholder='Your Address'
+                                    {...register("address", {
+                                        required: {
+                                            value: true,
+                                            message: 'Address is Required'
+                                        }
+                                    })}
+                                />
+                                <label className="label">
+                                    {errors.address?.type === 'required' && <span className="label-text-alt text-error">{errors.address.message}</span>}
+                                </label>
+                            </div>
+                            <div className="form-control w-full max-w-xs">
+                                <input
+                                    type="text"
+                                    className="input input-bordered w-full max-w-xs"
+                                    placeholder='Your Number'
+                                    {...register("phone", {
+                                        required: {
+                                            value: true,
+                                            message: 'Phone Number is Required'
+                                        }
+                                    })}
+                                />
+                                <label className="label">
+                                    {errors.phone?.type === 'required' && <span className="label-text-alt text-error">{errors.phone.message}</span>}
+                                </label>
+                            </div>
                             <input disabled={!isDirty || !isValid} className='btn btn-info mt-2 text-accent-content' type="submit" value="Confirm Order" />
                         </form>
                     </div>

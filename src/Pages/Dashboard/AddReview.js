@@ -4,6 +4,7 @@ import auth from '../../firebase.init';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
 import Loading from '../Shared/Loading';
+import { toast } from 'react-toastify';
 
 const AddReview = () => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
@@ -38,6 +39,7 @@ const AddReview = () => {
         })
             .then(res => res.json())
             .then(data => {
+                toast.success('You just reviewed one tool')
                 reset();
             })
     }

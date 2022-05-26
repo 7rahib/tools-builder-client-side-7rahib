@@ -17,8 +17,6 @@ const ManagerOrdersRow = ({ allOrder, refetch, index }) => {
             })
     }
 
-
-
     return (
         <tr className='hover'>
             <td>{index + 1}</td>
@@ -36,13 +34,13 @@ const ManagerOrdersRow = ({ allOrder, refetch, index }) => {
             <td>Total: {total}</td>
             <td>
                 {
-                    paid && !shipped ? < button onClick={() => handleSubmit(_id)} className='btn btn-xs btn-warning'>Shipped</button> : ''
+                    paid && !shipped ? < button onClick={() => handleSubmit(_id)} className='btn btn-xs btn-warning'>Pending</button> : ''
                 }
                 {
-                    !paid && < button className='btn btn-xs btn-ghost'>Pending</button>
+                    !paid && < button className='btn btn-xs btn-ghost'>Unpaid</button>
                 }
                 {
-                    shipped && < button className='btn btn-xs btn-success'>Delivered</button>
+                    shipped && < button className='btn btn-xs btn-success'>Shipped</button>
                 }
             </td>
         </tr >

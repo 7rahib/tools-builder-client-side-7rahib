@@ -40,9 +40,9 @@ function App() {
         <Route path='/addreview' element={<RequiredAuth><AddReview /></RequiredAuth>}></Route>
         <Route path='/dashboard' element={
           <Dashboard></Dashboard>}>
-          <Route index element={<MyOrders></MyOrders>}></Route>
+          <Route index element={<MyProfile></MyProfile>}></Route>
+          <Route path='myorder' element={<MyOrders></MyOrders>}></Route>
           <Route path='addreview' element={<AddReview></AddReview>}></Route>
-          <Route path='profile' element={<MyProfile></MyProfile>}></Route>
           <Route path='payment/:_id' element={<Payment></Payment>}></Route>
           <Route path='updateprofile' element={<UpdateProfile></UpdateProfile>}></Route>
           <Route path='manageproduct' element={<ManageProducts></ManageProducts>}></Route>
