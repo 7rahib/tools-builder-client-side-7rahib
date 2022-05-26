@@ -31,7 +31,7 @@ const UpdateProfile = () => {
             .then(data => {
                 console.log(data);
                 reset();
-                navigate('/dashboard/profile');
+                navigate('/dashboard');
             })
     }
     return (
