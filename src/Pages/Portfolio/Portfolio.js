@@ -21,6 +21,18 @@ const Portfolio = () => {
                                 <p class="mb-4 text-sm text-neutral-content">
                                     Email: naimurrashidrahib@gmail.com
                                 </p>
+                                <p className='text-lg'>List of skills</p>
+                                <p class="mb-4 text-sm text-neutral-content">
+                                    <ul>
+                                        <li>HTML</li>
+                                        <li>CSS</li>
+                                        <li>Node.js</li>
+                                        <li>JavaScript</li>
+                                        <li>MongoDB</li>
+                                        <li>React</li>
+                                        <li>Express.js</li>
+                                    </ul>
+                                </p>
                                 <p class="mb-4 text-sm text-neutral-content">
                                     LinkedIn: <a href="https://www.linkedin.com/in/naimur-rahib-82a487176/">Naimur Rahib</a>
                                 </p>
