@@ -11,7 +11,7 @@ const useToken = user => {
             name: name
         };
         if (email) {
-            fetch(`http://localhost:5000/user/${email}`, {
+            fetch(`https://pure-mesa-75303.herokuapp.com/user/${email}`, {
                 method: 'PUT',
                 headers: {
                     'content-type': 'application/json',

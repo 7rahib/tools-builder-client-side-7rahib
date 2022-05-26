@@ -10,7 +10,7 @@ const stripePromise = loadStripe('pk_test_51L1nRnCw3Fp4zZCe6a6dxsGv4FpwYVVmI24zJ
 
 const Payment = () => {
     const { _id } = useParams();
-    const { data: orderData, isLoading } = useQuery(['orderData', _id], () => fetch(`http://localhost:5000/orders/${_id}`, {
+    const { data: orderData, isLoading } = useQuery(['orderData', _id], () => fetch(`https://pure-mesa-75303.herokuapp.com/orders/${_id}`, {
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
         },

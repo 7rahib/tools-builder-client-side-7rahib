@@ -5,7 +5,7 @@ import ReviewsCard from './ReviewsCard';
 
 const MyReviews = () => {
 
-    const { data: reviews, isLoading, refetch } = useQuery('reviews', () => fetch('http://localhost:5000/reviews',).then(res => {
+    const { data: reviews, isLoading, refetch } = useQuery('reviews', () => fetch('https://pure-mesa-75303.herokuapp.com/reviews',).then(res => {
         refetch()
         return res.json()
     }))

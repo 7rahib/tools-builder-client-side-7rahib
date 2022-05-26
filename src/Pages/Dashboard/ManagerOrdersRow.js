@@ -5,7 +5,7 @@ const ManagerOrdersRow = ({ allOrder, refetch, index }) => {
 
     const handleSubmit = id => {
 
-        fetch(`http://localhost:5000/order/shipped/${id}`, {
+        fetch(`https://pure-mesa-75303.herokuapp.com/order/shipped/${id}`, {
             method: 'PUT',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`

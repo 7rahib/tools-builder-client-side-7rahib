@@ -11,7 +11,7 @@ const MyProfile = () => {
     const user = useAuthState(auth);
     const email = user[0].email;
 
-    const { data: userProfile, isLoading } = useQuery('userProfile', () => fetch(`http://localhost:5000/user/${email}`).then(res => res.json()))
+    const { data: userProfile, isLoading } = useQuery('userProfile', () => fetch(`https://pure-mesa-75303.herokuapp.com/user/${email}`).then(res => res.json()))
 
     if (isLoading) {
         return <Loading></Loading>

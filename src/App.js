@@ -21,6 +21,7 @@ import AddReview from './Pages/Dashboard/AddReview';
 import Payment from './Pages/Dashboard/Payment';
 import 'react-toastify/dist/ReactToastify.css';
 import UpdateProfile from './Pages/Dashboard/UpdateProfile';
+import NotFound from './Pages/Shared/NotFound';
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
         <Route path='/login' element={<Login />}></Route>
         <Route path='/signup' element={<Signup />}></Route>
         <Route path='/portfolio' element={<Portfolio />}></Route>
+        <Route path='*' element={<NotFound />}></Route>
         <Route path='/tools/:_id' element={<RequiredAuth><CheckoutPage /></RequiredAuth>}></Route>
         <Route path='/addreview' element={<RequiredAuth><AddReview /></RequiredAuth>}></Route>
         <Route path='/dashboard' element={

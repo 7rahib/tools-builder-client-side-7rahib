@@ -13,7 +13,7 @@ const CheckoutPage = () => {
     const navigate = useNavigate();
 
 
-    const url = `http://localhost:5000/tools/${_id}`;
+    const url = `https://pure-mesa-75303.herokuapp.com/tools/${_id}`;
 
     const { data: tool, isLoading, refetch } = useQuery('tool', () => fetch(url).then(res => res.json()))
 
@@ -25,7 +25,7 @@ const CheckoutPage = () => {
 
     // const onSubmit = data => {
     //     const newQuantity = { quantity: parseInt(quantity) - parseInt(data.newQuantityValue) };
-    //     const url = `http://localhost:5000/tools/${_id}`;
+    //     const url = `https://pure-mesa-75303.herokuapp.com/tools/${_id}`;
     //     fetch(url, {
     //         method: "PUT",
     //         headers: {
@@ -45,7 +45,7 @@ const CheckoutPage = () => {
 
         const newQuantity = parseInt(tool.quantity) - parseInt(gq);
 
-        const url = `http://localhost:5000/tools/${_id}`;
+        const url = `https://pure-mesa-75303.herokuapp.com/tools/${_id}`;
         console.log({ newQuantity })
         fetch(url, {
             method: "PUT",
@@ -64,7 +64,7 @@ const CheckoutPage = () => {
     }
 
     const placeOrder = order => {
-        fetch('http://localhost:5000/order', {
+        fetch('https://pure-mesa-75303.herokuapp.com/order', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

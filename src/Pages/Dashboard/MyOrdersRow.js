@@ -16,7 +16,7 @@ const MyOrdersRow = ({ order, index }) => {
         })
             .then((willDelete) => {
                 if (willDelete) {
-                    fetch(`http://localhost:5000/order/${id}`, {
+                    fetch(`https://pure-mesa-75303.herokuapp.com/order/${id}`, {
                         method: 'DELETE',
                         headers: {
                             'content-type': 'application/json',

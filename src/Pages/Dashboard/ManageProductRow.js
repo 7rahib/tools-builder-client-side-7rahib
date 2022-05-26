@@ -13,7 +13,7 @@ const ManagerProductRow = ({ product, refetch, index }) => {
         })
             .then((willDelete) => {
                 if (willDelete) {
-                    fetch(`http://localhost:5000/tools/${_id}`, {
+                    fetch(`https://pure-mesa-75303.herokuapp.com/tools/${_id}`, {
                         method: 'DELETE',
                         headers: {
                             'content-type': 'application/json',

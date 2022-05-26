@@ -16,7 +16,7 @@ const AddProducts = () => {
             min_quantity: data.min_quantity,
             image: data.image
         }
-        fetch('http://localhost:5000/tools', {
+        fetch('https://pure-mesa-75303.herokuapp.com/tools', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
