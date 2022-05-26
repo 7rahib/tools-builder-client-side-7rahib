@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import swal from 'sweetalert';
 
-const MyOrdersRow = ({ order, refetch, index }) => {
+const MyOrdersRow = ({ order, index }) => {
     const { _id, userName, quantity, email, name, price, total, paid, transactionId } = order
 
 
@@ -16,7 +16,7 @@ const MyOrdersRow = ({ order, refetch, index }) => {
         })
             .then((willDelete) => {
                 if (willDelete) {
-                    fetch(`https://cryptic-island-51343.herokuapp.com/order/${id}`, {
+                    fetch(`http://localhost:5000/order/${id}`, {
                         method: 'DELETE',
                         headers: {
                             'content-type': 'application/json',
@@ -25,7 +25,6 @@ const MyOrdersRow = ({ order, refetch, index }) => {
                     })
                         .then(res => res.json())
                         .then(data => {
-                            refetch()
                         })
                 } else {
                 }
@@ -34,7 +33,6 @@ const MyOrdersRow = ({ order, refetch, index }) => {
 
     return (
         <tr className='hover'>
-            <td>{index + 1}</td>
             <td>
                 <div className="font-bold">{userName}</div>
             </td>
@@ -44,9 +42,9 @@ const MyOrdersRow = ({ order, refetch, index }) => {
             <td>
                 {name}
             </td>
-            <td>${price}</td>
+            <td>$ {price}</td>
             <td>{quantity} pieces</td>
-            <td>Total: {total}</td>
+            <td>$ {total}</td>
             <td>
                 {(price && !paid) && <Link to={`/dashboard/payment/${_id}`}><button className='btn btn-sm btn-success text-accent-content'>Pay</button></Link>}
                 {(price && paid) && <>

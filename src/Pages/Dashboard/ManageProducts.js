@@ -4,7 +4,7 @@ import Loading from '../Shared/Loading';
 import ManagerProductRow from './ManageProductRow';
 
 const ManageProducts = () => {
-    const { data: products, isLoading, refetch } = useQuery('products', () => fetch('https://cryptic-island-51343.herokuapp.com/tools').then(res => res.json()))
+    const { data: products, isLoading, refetch } = useQuery('products', () => fetch('http://localhost:5000/tools').then(res => res.json()))
 
     if (isLoading) {
         return <Loading></Loading>

@@ -1,31 +1,31 @@
-import { signOut } from 'firebase/auth';
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
 import { useNavigate } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
 import auth from '../../firebase.init';
+import useToken from '../../hooks/useToken';
 import Loading from '../Shared/Loading';
 import MyOrdersRow from './MyOrdersRow';
 
 const MyOrders = () => {
     const user = useAuthState(auth);
     const email = user[0]?.email;
-    const navigate = useNavigate()
-    const { data: orders, isLoading, refetch } = useQuery('orders', () => fetch(`https://cryptic-island-51343.herokuapp.com/order/${email}`, {
-        headers: {
-            'authorization': `Bearer ${localStorage.getItem('accessToken')}`
-        }
-    }).then(res => {
-        if (res.status === '401' || res.status === '403') {
-            signOut(auth);
-            localStorage.removeItem('accessToken');
-            navigate('/login');
-        }
-        refetch()
-        return res.json()
-    }))
+    const navigate = useNavigate();
 
+    const url = `http://localhost:5000/order/${email}`;
+    const { data: orderInfo, isLoading } = useQuery('orderInfo', () => fetch(url, {
+        headers: {
+            authorization: `Bearer ${localStorage.getItem('accessToken')}`
+        },
+    }).then(res => res.json()))
+
+    const [token] = useToken(user)
+
+
+
+    if (token) {
+        navigate('/login')
+    }
 
     if (isLoading) {
         return <Loading></Loading>
@@ -38,7 +38,6 @@ const MyOrders = () => {
                 <table className="table w-full">
                     <thead>
                         <tr>
-                            <th></th>
                             <th>Name</th>
                             <th>Email</th>
                             <th>Product</th>
@@ -51,11 +50,10 @@ const MyOrders = () => {
                     </thead>
                     <tbody>
                         {
-                            orders.map((order, index) => <MyOrdersRow
+                            orderInfo?.map((order, index) => <MyOrdersRow
                                 key={order._id}
                                 order={order}
                                 index={index}
-                                refetch={refetch}
                             ></MyOrdersRow>)
                         }
                     </tbody>

@@ -17,7 +17,7 @@ const UpdateProfile = () => {
             education: data.education,
             institution: data.institution
         };
-        fetch(`https://cryptic-island-51343.herokuapp.com/user/${email}`, {
+        fetch(`http://localhost:5000/user/${email}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',

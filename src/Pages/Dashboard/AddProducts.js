@@ -16,7 +16,7 @@ const AddProducts = () => {
             min_quantity: data.min_quantity,
             image: data.image
         }
-        fetch('https://cryptic-island-51343.herokuapp.com/tools', {
+        fetch('http://localhost:5000/tools', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

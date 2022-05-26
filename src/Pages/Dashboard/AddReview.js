@@ -9,7 +9,7 @@ const AddReview = () => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const user = useAuthState(auth)
 
-    const { data: toolsName, isLoading } = useQuery('toolsname', () => fetch('https://cryptic-island-51343.herokuapp.com/tools', {
+    const { data: toolsName, isLoading } = useQuery('toolsname', () => fetch('http://localhost:5000/tools', {
         headers: {
             'authorization': `Bearer ${localStorage.getItem('accessToken')}`
         }
@@ -28,7 +28,7 @@ const AddReview = () => {
             rating: data.rating,
             image: data.image
         };
-        fetch('https://cryptic-island-51343.herokuapp.com/reviews', {
+        fetch('http://localhost:5000/reviews', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

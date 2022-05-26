@@ -13,7 +13,7 @@ const ManagerProductRow = ({ product, refetch, index }) => {
         })
             .then((willDelete) => {
                 if (willDelete) {
-                    fetch(`https://cryptic-island-51343.herokuapp.com/tools/${_id}`, {
+                    fetch(`http://localhost:5000/tools/${_id}`, {
                         method: 'DELETE',
                         headers: {
                             'content-type': 'application/json',

@@ -4,7 +4,7 @@ import Loading from '../Shared/Loading';
 import ToolsCard from './ToolsCard';
 
 const Tools = () => {
-    const { data: tools, isLoading, refetch } = useQuery('tools', () => fetch('https://cryptic-island-51343.herokuapp.com/tools').then(res => res.json()))
+    const { data: tools, isLoading, refetch } = useQuery('tools', () => fetch('http://localhost:5000/tools').then(res => res.json()))
 
     if (isLoading) {
         return <Loading></Loading>

@@ -9,8 +9,8 @@ import CheckoutForm from './CheckoutForm';
 const stripePromise = loadStripe('pk_test_51L1nRnCw3Fp4zZCe6a6dxsGv4FpwYVVmI24zJ4qBXJk7Dsd2ntYrfvBHe9I2cL8U9j48GR05Rpo0GIY2X1heHpjB009X3WqG7s');
 
 const Payment = () => {
-    const { id } = useParams();
-    const { data: orderData, isLoading } = useQuery(['orderData', id], () => fetch(`http://localhost:5000/order/${id}`, {
+    const { _id } = useParams();
+    const { data: orderData, isLoading } = useQuery(['orderData', _id], () => fetch(`http://localhost:5000/orders/${_id}`, {
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
         },
@@ -18,6 +18,8 @@ const Payment = () => {
     if (isLoading) {
         return <Loading></Loading>
     }
+
+    console.log(orderData)
 
     return (
         <div>

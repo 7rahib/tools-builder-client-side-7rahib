@@ -14,8 +14,8 @@ const Feature = () => {
                             <img src="https://tailus.io/sources/blocks/stacked/preview/images/avatars/burger.png" class="w-10" width="512" height="512" alt="burger illustration" />
 
                             <div class="space-y-2">
-                                <h5 class="text-xl text-neutral-content font-medium transition group-hover:text-yellow-600">First feature</h5>
-                                <p class="text-sm text-neutral-content">Neque Dolor, fugiat non cum doloribus aperiam voluptates nostrum.</p>
+                                <h5 class="text-xl text-neutral-content font-medium transition group-hover:text-yellow-600">We are Leading in our Field</h5>
+                                <p class="text-sm text-neutral-content">Industry Leading meatures are taken to be on top always</p>
                             </div>
                             <div class="flex justify-between items-center group-hover:text-yellow-600">
                                 <span class="text-sm">Read more</span>
@@ -27,8 +27,8 @@ const Feature = () => {
                             <img src="https://tailus.io/sources/blocks/stacked/preview/images/avatars/trowel.png" class="w-10" width="512" height="512" alt="burger illustration" />
 
                             <div class="space-y-2">
-                                <h5 class="text-xl text-neutral-content font-medium transition group-hover:text-yellow-600">Second feature</h5>
-                                <p class="text-sm text-neutral-content">Neque Dolor, fugiat non cum doloribus aperiam voluptates nostrum.</p>
+                                <h5 class="text-xl text-neutral-content font-medium transition group-hover:text-yellow-600">Quality Ensured</h5>
+                                <p class="text-sm text-neutral-content">Our quality checks are best in the world. End of the story!!</p>
                             </div>
                             <div class="flex justify-between items-center group-hover:text-yellow-600">
                                 <span class="text-sm">Read more</span>
@@ -40,8 +40,8 @@ const Feature = () => {
                             <img src="https://tailus.io/sources/blocks/stacked/preview/images/avatars/package-delivery.png" class="w-10" width="512" height="512" alt="burger illustration" />
 
                             <div class="space-y-2">
-                                <h5 class="text-xl text-neutral-content font-medium transition group-hover:text-yellow-600">Third feature</h5>
-                                <p class="text-sm text-neutral-content">Neque Dolor, fugiat non cum doloribus aperiam voluptates nostrum.</p>
+                                <h5 class="text-xl text-neutral-content font-medium transition group-hover:text-yellow-600">Our Product Line</h5>
+                                <p class="text-sm text-neutral-content">Very unique product line and reliable product line</p>
                             </div>
                             <div class="flex justify-between items-center group-hover:text-yellow-600">
                                 <span class="text-sm">Read more</span>
@@ -53,8 +53,8 @@ const Feature = () => {
                             <img src="https://tailus.io/sources/blocks/stacked/preview/images/avatars/metal.png" class="w-10" width="512" height="512" alt="burger illustration" />
 
                             <div class="space-y-2">
-                                <h5 class="text-xl text-neutral-content font-medium transition group-hover:text-yellow-600">More features</h5>
-                                <p class="text-sm text-neutral-content">Neque Dolor, fugiat non cum doloribus aperiam voluptates nostrum.</p>
+                                <h5 class="text-xl text-neutral-content font-medium transition group-hover:text-yellow-600">Our Services</h5>
+                                <p class="text-sm text-neutral-content">Our service system until the product life ends is comparable to none</p>
                             </div>
                             <div class="flex justify-between items-center group-hover:text-yellow-600">
                                 <span class="text-sm">Read more</span>

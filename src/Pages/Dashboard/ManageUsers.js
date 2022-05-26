@@ -8,7 +8,7 @@ import ManagerUsersRow from './ManagerUsersRow';
 
 const ManageUsers = () => {
     const navigate = useNavigate()
-    const { data: users, isLoading, refetch } = useQuery('users', () => fetch('https://cryptic-island-51343.herokuapp.com/user', {
+    const { data: users, isLoading, refetch } = useQuery('users', () => fetch('http://localhost:5000/user', {
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
         },

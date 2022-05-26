@@ -14,7 +14,7 @@ const ManagerUsersRow = ({ user, refetch, index }) => {
         })
             .then((willDelete) => {
                 if (willDelete) {
-                    fetch(`https://cryptic-island-51343.herokuapp.com/user/${email}`, {
+                    fetch(`http://localhost:5000/user/${email}`, {
                         method: 'DELETE',
                         headers: {
                             'content-type': 'application/json',
@@ -41,7 +41,7 @@ const ManagerUsersRow = ({ user, refetch, index }) => {
         })
             .then((willDelete) => {
                 if (willDelete) {
-                    fetch(`https://cryptic-island-51343.herokuapp.com/user/admin/${_id}`, {
+                    fetch(`http://localhost:5000/user/admin/${_id}`, {
                         method: 'PUT',
                         headers: {
                             authorization: `Bearer ${localStorage.getItem('accessToken')}`
